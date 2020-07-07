@@ -16,22 +16,13 @@
 
                 <h3 class="profile-username text-center">Administrador</h3>
 
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Nombre </b> <a class="float-right">LUIS ANGEL</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Apellido</b> <a class="float-right">pfuño canales</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Dni</b> <a class="float-right">72453560</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Contacto</b> <a class="float-right">994905508</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Email</b> <a class="float-right">alguien300599@gmail.com</a>
-                  </li>
+                <?php 
+                $id=$_SESSION['ID'];
+                echo "<script>let idRegistro=$id</script>";
+                ?>
+
+                <ul id="listado-datos" class="list-group list-group-unbordered mb-3" >
+                    <!-- rellenar datos del usuario API -->
                 </ul>
 
                 <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
@@ -70,12 +61,7 @@
 
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal">
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                      </div>
+
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
@@ -83,9 +69,9 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label">Contacto</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                          <input type="text" class="form-control" id="inputName2" placeholder="celular y/o telefono">
                         </div>
                       </div>
                       <div class="form-group row">

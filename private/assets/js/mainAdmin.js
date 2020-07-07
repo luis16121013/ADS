@@ -1,17 +1,24 @@
 console.log(idRegistro);
 const getDataAdmin=()=>{
-    const registro=document.querySelector('#content-perfil-user');
+    const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
     fetch(`http://192.168.0.4/ADS/api/users/admins/${idRegistro}`)
     .then(res=>res.json())
     .then(data=>{
         for(let v of data){
             registro.innerHTML+=`
-            <p><strong>Nombre: </strong>${v.firstName}</p>
-            <p><strong>Apellido: </strong>${v.lastName}</p>
-            <p><strong>Contacto: </strong>${v.phone}</p>
-            <p><strong>Cargo: </strong>${v.cargo}</p>
-            <p><strong>Email: </strong>${v.Email}</p>
+              <li class="list-group-item">
+                <b>Nombre </b> <a class="float-right">${v.firstName}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Apellido</b> <a class="float-right">${v.lastName}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Contacto</b> <a class="float-right">${v.phone}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Email</b> <a class="float-right">${v.Email}/a>
+              </li>
             `;
         }
     })

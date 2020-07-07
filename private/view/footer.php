@@ -4,7 +4,7 @@
 <?php
     if(isset($_SESSION['usuario'])){
         if($_SESSION['usuario']=='administrador'){
-            //echo "<script src='assets/js/mainAdmin.js'></script>";
+            echo "<script src='assets/js/mainAdmin.js'></script>";
         }else if($_SESSION['usuario']=='Docente'){
             echo "<script src='assets/js/mainDocente.js'></script>";
         }else if($_SESSION['usuario']=='Estudiante'){
