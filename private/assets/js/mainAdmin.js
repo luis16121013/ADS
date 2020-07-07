@@ -1,4 +1,4 @@
-console.log(idRegistro);
+//console.log(idRegistro);
 const getDataAdmin=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
@@ -17,10 +17,19 @@ const getDataAdmin=()=>{
                 <b>Contacto</b> <a class="float-right">${v.phone}</a>
               </li>
               <li class="list-group-item">
-                <b>Email</b> <a class="float-right">${v.Email}/a>
+                <b>Email</b> <a class="float-right">${v.Email}</a>
               </li>
             `;
         }
     })
 }
 getDataAdmin();
+const dataAditional=document.querySelector('#infoAdicional');
+dataAditional.addEventListener('click',e=>{
+    e.preventDefault();
+    Swal.fire({
+        type:'success',
+        title:'Exito!',
+        text:'Datos guardados.'
+    })
+})
