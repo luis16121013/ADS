@@ -13,7 +13,7 @@
           <a id="inicio" class="nav-link" href="?a=inicio">INICIO</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cursos</a>
+          <a class="nav-link" href="?a=cursos">Cursos</a>
         </li>
 <!-- Dropdown -->
         <li class="nav-item dropdown">
@@ -41,7 +41,7 @@
           <a class="nav-link" href="?a=inicio">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="?a=cursos">Cursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
