@@ -15,9 +15,9 @@ if(isset($_GET['url'])){
             $r=new controller('users');
             print_r(json_encode($r->UsersId($number)));
             http_response_code(200);
-        }else if($url=='users/studens'){
+        }else if($url=='users/students'){
             $r=new controller('users'); 
-            print_r(json_encode($r->getStudens()));
+            print_r(json_encode($r->getStudents()));
             http_response_code(200);
         }else if($url=='users/teachers'){
             $r=new controller('users'); 
@@ -27,7 +27,7 @@ if(isset($_GET['url'])){
             $r=new controller('users'); 
             print_r(json_encode($r->getAdmins()));
             http_response_code(200);
-        }else if($url=="users/studens/$number"){
+        }else if($url=="users/students/$number"){
             $r=new controller('users'); 
             print_r(json_encode($r->getStudentsById($number)));
             http_response_code(200);

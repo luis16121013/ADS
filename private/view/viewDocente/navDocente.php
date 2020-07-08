@@ -18,12 +18,11 @@
 <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                Usuarios
+                Estudiantes
           </a>
         <div class="dropdown-menu bg-dark">
-          <a class="dropdown-item text-primary" href="#">Docentes</a>
-          <a class="dropdown-item text-primary" href="#">Alumnos</a>
-          <a class="dropdown-item text-primary" href="#">Administradores</a>
+          <a class="dropdown-item text-primary" href="#">Primaria</a>
+          <a class="dropdown-item text-primary" href="#">Secundaria</a>
         </div>
         </li>
     </ul>

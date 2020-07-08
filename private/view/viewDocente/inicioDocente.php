@@ -4,7 +4,7 @@
       <?php echo $_SESSION['name'];?> 
       </h1><br>
       <div class="container ">
-          <h3 class="text-center">ESTIMADO USUARIO!</h3>
+          <h3 class="text-center">ESTIMADO DOCENTE!</h3>
           <h4 class="text-center">Le damos una cordial bienvenida al sistema escolar virtual!</h4><br>
           <h6 class="text-center">Atte. La Administración.</h6>
           <br>
