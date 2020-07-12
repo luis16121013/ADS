@@ -26,11 +26,11 @@
 
             <form action="index.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="id" placeholder="Codigo">
+                    <input type="text" class="form-control" required name="id" placeholder="Codigo">
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                    <input type="password" class="form-control"  required name="pass" placeholder="Password">
                 </div>
 
                 <div class="form-group">
