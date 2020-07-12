@@ -1,4 +1,4 @@
-<div class="container-fluid" style="padding-top:100px">
+<div class="container-fluid ">
 
         <div class="row">
 

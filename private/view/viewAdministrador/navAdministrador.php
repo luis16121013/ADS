@@ -21,7 +21,7 @@
                 Usuarios
           </a>
         <div class="dropdown-menu bg-dark">
-          <a class="dropdown-item text-primary" href="#">Docentes</a>
+          <a class="dropdown-item text-primary" href="?a=pageDocente">Docentes</a>
           <a class="dropdown-item text-primary" href="#">Alumnos</a>
           <a class="dropdown-item text-primary" href="#">Administradores</a>
         </div>
@@ -48,9 +48,9 @@
               Usuarios
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#docente">Docentes</a>
-            <a class="dropdown-item" href="#alumno">Alumnos</a>
-            <a class="dropdown-item" href="#admini">Administradores</a>
+            <a class="dropdown-item" href="?a=pageDocente">Docentes</a>
+            <a class="dropdown-item" href="#">Alumnos</a>
+            <a class="dropdown-item" href="#">Administradores</a>
           </div>
         </li>
         <li class="nav-item">

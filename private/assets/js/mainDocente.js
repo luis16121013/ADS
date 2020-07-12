@@ -1,4 +1,6 @@
 //console.log(idRegistro);
+const dataAditional=document.querySelector('#infoAdicional');
+
 const getDataDocente=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
@@ -24,7 +26,7 @@ const getDataDocente=()=>{
     })
 }
 getDataDocente();
-const dataAditional=document.querySelector('#infoAdicional');
+
 dataAditional.addEventListener('click',e=>{
     e.preventDefault();
     Swal.fire({

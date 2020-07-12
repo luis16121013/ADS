@@ -1,5 +1,5 @@
 <!-- menu perfil---------------------------------------------------- -->
-<div class="content-wrapper " style="padding-top:75px;">
+<div class="content-wrapper mb-1">
     <section class="content">
       <div class="container-fluid">
         <div class="row">
