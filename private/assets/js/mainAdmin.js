@@ -2,6 +2,7 @@
 const dataAditional=document.querySelector('#infoAdicional');
 const pagination=document.querySelector('#table-pagination-global');
 const search=document.querySelector('#myInput');
+const tbody=document.querySelector('#myTable');
 let ArregloJson=[];
 let datasBrowser=[];
 /* reiniciamos el arreglo de obj JSON */
@@ -24,6 +25,10 @@ const createDataByJson=(id,cod,rol,nombre,apellido,email,phone)=>{
     }
     ArregloJson.push(Teacher);
 }
+/*
+*PRINT FOR MODAL VIEW FORM ::::NOTA
+*/
+
 
 /* imprimimos datos en tabla */
 const printByRange=(initial=0,arr=ArregloJson)=>{
@@ -39,6 +44,12 @@ const printByRange=(initial=0,arr=ArregloJson)=>{
           <td>${arr[initial].apellido}</td>
           <td>${arr[initial].email}</td>
           <td>${arr[initial].contacto}</td>
+          <td class="bg-white">
+            <a id="${arr[initial].idUser}" href="#"><img src="assets/icon/eliminar.svg" style="width: 30px;"></a>
+            <a class="ml-2" href="#${arr[initial].idUser}" data-toggle="modal" data-target="#exampleModal">
+              <img src="assets/icon/info.svg" style="width: 26px;">
+            </a>
+          </td>
         </tr>
     `;
     initial++;
@@ -85,7 +96,7 @@ return cantPagination;
 /**
  * METODO DE BUSQUEDA POR ARREGLO JSON
  */
-const busquesaJson=()=>{
+const busquedaJson=()=>{
   let textSearch=search.value.toLowerCase();
   resetDataJson(datasBrowser);
   for(let v of ArregloJson){
@@ -190,11 +201,11 @@ if(dataAditional!==null){
     })
   })
 }
+
 if(pagination!==null){
+  //evento al hacer click en la paginacion depende de las paginaciones
   pagination.addEventListener('click',e=>{
     e.preventDefault();
-    //console.log(e.target.textContent);
-    //console.log(createPaginationOftable(ArregloJson,false));
     let numberPagination=1;
     let rangePrintPagination=0;
     let numberPress=parseInt(e.target.textContent);
@@ -219,12 +230,55 @@ if(pagination!==null){
         numberPagination++;
       }
     }
-
+    
   })
 }
+
+// ADD EVENT AL BUSCADOR
 if(search!==null){
   search.addEventListener('keyup',e=>{
     e.preventDefault();
-    busquesaJson();
+    busquedaJson();
   })
+}
+
+//ADD EVENT AL CUERPO DE LA TABLA
+if(tbody!==null){
+  
+  tbody.addEventListener('click',e=>{
+    e.preventDefault();
+    if(typeof e.target.parentElement.attributes.id != 'undefined'){
+         Swal.fire({
+           title: 'Eliminar!',
+           text: "Esta seguro que desea eliminar!",
+           type: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: 'si, eliminar!'
+         }).then((result) => {
+         if (result.value) {
+             let id=e.target.parentElement.attributes.id.value;
+             let infoJson=ArregloJson.filter(obj=>{
+              if(obj.idUser==id){
+                return obj;
+              }
+             });
+             Swal.fire(
+               'Exito!',
+               `Usuario ${infoJson[0].nombre} Eliminado!`,
+               'success'
+             )
+             console.log(e.target.parentElement.attributes.id.value);
+           }
+         })
+    }
+   /*  if(typeof e.target.parentElement.attributes.id.value !=="undefined"){
+      console.log(e.target.parentElement.attributes.id.value);
+    } */
+    
+    //agregando alerta
+
+  })
+  
 }
