@@ -13,15 +13,16 @@ const resetDataJson=(arr=ArregloJson)=>{
 }
 
 /* ingresamos datos para el arreglo */
-const createDataByJson=(id,cod,rol,nombre,apellido,email,phone)=>{
+const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id)=>{
     let Teacher={
-      idUser:id,
+      idUser:idUser,
       codigo:cod,
       rol:rol,
       nombre:nombre,
       apellido:apellido,
       email:email,
-      contacto:phone
+      contacto:phone,
+      id:id
     }
     ArregloJson.push(Teacher);
 }
@@ -38,19 +39,19 @@ const printByRange=(initial=0,arr=ArregloJson)=>{
   rellenar.innerHTML='';
   while(true){
     rellenar.innerHTML+=`
-        <tr>
-          <td>${arr[initial].codigo}</td>
-          <td>${arr[initial].nombre}</td>
-          <td>${arr[initial].apellido}</td>
-          <td>${arr[initial].email}</td>
-          <td>${arr[initial].contacto}</td>
-          <td class="bg-white">
-            <a id="${arr[initial].idUser}" href="#"><img src="assets/icon/eliminar.svg" style="width: 30px;"></a>
-            <a class="ml-2" href="#${arr[initial].idUser}" data-toggle="modal" data-target="#exampleModal">
-              <img src="assets/icon/info.svg" style="width: 26px;">
-            </a>
-          </td>
-        </tr>
+      <tr>
+        <td>${arr[initial].codigo}</td>
+        <td>${arr[initial].nombre}</td>
+        <td>${arr[initial].apellido}</td>
+        <td>${arr[initial].email}</td>
+        <td>${arr[initial].contacto}</td>
+        <td class="bg-white">
+          <a id="${arr[initial].idUser}" href="#"><img src="assets/icon/eliminar.svg" style="width: 30px;"></a>
+          <a class="ml-2" href="#" value="${arr[initial].id}" data-toggle="modal" data-target="#exampleModal">
+            <img src="assets/icon/info.svg" style="width: 26px;">
+          </a>
+        </td>
+      </tr>
     `;
     initial++;
     if(tamArr===initial){//romper bucle si pasa el tamaño dela matriz
@@ -166,7 +167,7 @@ const getDataConfigTeacher=()=>{
     .then(res=>res.json())
     .then(data=>{
       for(let j of data){
-        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.Email,j.phone);
+        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.Email,j.phone,j.id);
       }  
     })
     .then(function(){
@@ -269,16 +270,28 @@ if(tbody!==null){
                `Usuario ${infoJson[0].nombre} Eliminado!`,
                'success'
              )
-             console.log(e.target.parentElement.attributes.id.value);
            }
          })
     }
-   /*  if(typeof e.target.parentElement.attributes.id.value !=="undefined"){
-      console.log(e.target.parentElement.attributes.id.value);
-    } */
-    
-    //agregando alerta
+    if(typeof e.target.parentNode.attributes.value !='undefined'){
+      //console.log(e.target.parentNode.attributes.value.textContent);
+      const s=e.target.parentNode.attributes.value.textContent;
+      const setName=document.querySelector('#inputNombres');
+      const setLasName=document.querySelector('#inputApellidos');
+      const setEmail=document.querySelector('#inputEmail');
+      const setContact=document.querySelector('#inputContacto');
 
+      let p=ArregloJson.filter(d=>{
+        if(d.id==s){
+          return d;
+        }
+      });
+      setName.value=p[0].nombre;
+      setLasName.value=p[0].apellido;
+      setEmail.value=p[0].email;
+      setContact.value=p[0].contacto;
+    }
+   
   })
   
 }

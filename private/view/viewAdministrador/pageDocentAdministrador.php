@@ -44,7 +44,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">titulo aqui</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Informacion Personal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -53,24 +53,34 @@
         <!-- desde aqui comienza el formulario -->
 
         <div class="container">
-          <form class="">
+          <form id="formulario-info-update">
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              <label for="inputNombres">Nombres</label>
+              <input type="text" class="form-control" id="inputNombres" placeholder="Nombres">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword4">Password</label>
-              <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              <label for="inputApellidos">Apellidos</label>
+              <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <label for="inputContacto">Contacto</label>
+            <input type="text" class="form-control" id="inputContacto" placeholder="telefono o celular">
           </div>
           <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            <label for="inputDomicilio">Domicilio</label>
+            <input type="text" class="form-control" id="inputDomicilio" placeholder="Jr ejemplo 888">
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -78,10 +88,11 @@
               <input type="text" class="form-control" id="inputCity">
             </div>
             <div class="form-group col-md-4">
-              <label for="inputState">State</label>
+              <label for="inputState">Sexo</label>
               <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
+                <option selected>Opcion</option>
+                <option>Masculino</option>
+                <option>Femenino</option>
               </select>
             </div>
             <div class="form-group col-md-2">
@@ -89,14 +100,7 @@
               <input type="text" class="form-control" id="inputZip">
             </div>
           </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck">
-              <label class="form-check-label" for="gridCheck">
-                Check me out
-              </label>
-            </div>
-          </div>
+          
           <button type="submit" class="btn btn-primary">Sign in</button>
         </form>
         </div>
