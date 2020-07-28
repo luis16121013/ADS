@@ -2,7 +2,8 @@
 if(isset($_GET['url'])){
     require_once('src/controller/controller.php');
     $url=$_GET['url'];
-    
+    echo $url;
+		/*
     $number=intval(preg_replace('/[^0-9]+/','',$url),10);
     header("content-type: application/json; charset=utf-8");
 
@@ -74,8 +75,8 @@ if(isset($_GET['url'])){
         }else{
             http_response_code(400);
         }
-    }
+		}   */
 }else{
-    require_once('src/view/viewAPI.html');
+    require_once('src/view/viewApi.html');
 }
 ?>

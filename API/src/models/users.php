@@ -6,7 +6,7 @@ class users {
         $this->db=database::getConnection();
     }
     public function getUsers(){
-        $sql="SELECT*FROM table_user";
+        $sql="SELECT*FROM table_users";
         return $this->query($sql);
     }
     public function getUsersId($id){

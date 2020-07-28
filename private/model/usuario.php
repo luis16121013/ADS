@@ -16,8 +16,11 @@
             try{
                 $rs=array();
                 $rs=$this->db->conexion->prepare("CALL validarUser(?,?,?)");
-                $rs->execute(array($user,$id,$password));
+								$rs->execute(array($user,$id,$password));
+								if($rs->rowCount()>0){
                 return $rs->fetch(PDO::FETCH_OBJ);
+								}
+								return false;
             }catch(Exception $e){
                 die('error: '.$e->getMessage());
             }

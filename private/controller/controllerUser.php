@@ -5,7 +5,7 @@
         function __construct(){
             $this->usuario=new usuario();
         }
-        function validarUser(){
+        public function validarUser(){
             $rs=$this->usuario->validateUser($_POST['cargo'],$_POST['id'],$_POST['pass']);
             if(!$rs){
                 return 'Err_user';
