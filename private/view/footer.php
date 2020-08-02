@@ -4,7 +4,7 @@
 <script src="lib/sweetAlert2/sweetalert2.all.min.js"></script>
 <?php
     if(isset($_SESSION['usuario'])){
-        if($_SESSION['usuario']=='administrador'){
+        if($_SESSION['usuario']=='Administrador'){
             echo "<script src='assets/js/mainAdmin.js'></script>";
         }else if($_SESSION['usuario']=='Docente'){
             echo "<script src='assets/js/mainDocente.js'></script>";

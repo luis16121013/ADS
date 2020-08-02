@@ -129,11 +129,13 @@ const busquedaJson=()=>{
 
 /**
  * informacion de API pagina Perfil 
+ * fetch(`http://192.168.0.4/ADS/api/users/admins/${idRegistro}`)
+ * //fetch(`http://192.168.0.4:8888/api/administrador/${idRegistro}`)
  */
 const getDataAdmin=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
-    fetch(`http://192.168.0.4/ADS/api/users/admins/${idRegistro}`)
+    fetch(`http://192.168.0.4:8888/api/administrador/${idRegistro}`)
     .then(res=>res.json())
     .then(data=>{
         for(let v of data){
@@ -148,26 +150,29 @@ const getDataAdmin=()=>{
                 <b>Contacto</b> <a class="float-right">${v.phone}</a>
               </li>
               <li class="list-group-item">
-                <b>Email</b> <a class="float-right">${v.Email}</a>
+                <b>Email</b> <a class="float-right">${v.email}</a>
               </li>
             `;
         }
     })
+    
 }
 
 
 /**
+ * fetch('http://192.168.0.4/ads/api/users/teachers/')
+ * fetch('http://192.168.0.4/ads/api/docente')
  * informacion de API tabla USERS/TEACHERS
  */
 const getDataConfigTeacher=()=>{
     resetDataJson();
     const rellenar=document.querySelector('#myTable');
     rellenar.innerHTML='';
-    fetch('http://192.168.0.4/ads/api/users/teachers/')
+    fetch('http://192.168.0.4:8888/api/docente')
     .then(res=>res.json())
     .then(data=>{
       for(let j of data){
-        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.Email,j.phone,j.id);
+        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.email,j.phone,j.id);
       }  
     })
     .then(function(){
