@@ -7,7 +7,7 @@
         }
         public function validarUser(){
             $rs=$this->usuario->validateUser($_POST['cargo'],$_POST['id'],$_POST['pass']);
-            if(!$rs){
+            if(!$rs || $rs==null){
                 return 'Err_user';
             }
             return $rs;

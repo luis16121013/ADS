@@ -6,7 +6,7 @@ if(isset($_SESSION['usuario'])){
 }else if(isset($_POST['ingresar'])){
      require_once 'private/controller/controllerUser.php';
      $controller= new controllerUser();
-		 $rs="Err_user";//$controller->validarUser();
+		 $rs=$controller->validarUser();
 		 if($rs=='Err_user'){
       require_once('public/login.php');
      }else{

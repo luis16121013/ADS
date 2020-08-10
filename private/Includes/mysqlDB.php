@@ -4,7 +4,7 @@
         static private $port='3306';
         static private $db='aulavirtual2020';
         static private $user='root';
-				static private $pass='4321';
+		static private $pass='4321';
 
 
         public static function getConexion(){
