@@ -5,6 +5,8 @@ class docente{
     public function __construct(){
         $this->db=database::getConnection();
     }
+
+    //no se esta usando NOTA
     public function urlController($url){
         if($url=='inicio'){
             return 'index';

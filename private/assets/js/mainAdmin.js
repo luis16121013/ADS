@@ -13,7 +13,7 @@ const resetDataJson=(arr=ArregloJson)=>{
 }
 
 /* ingresamos datos para el arreglo */
-const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id)=>{
+const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id,pass)=>{
     let Teacher={
       idUser:idUser,
       codigo:cod,
@@ -22,7 +22,8 @@ const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id)=>{
       apellido:apellido,
       email:email,
       contacto:phone,
-      id:id
+      id:id,
+      pass:pass
     }
     ArregloJson.push(Teacher);
 }
@@ -172,7 +173,7 @@ const getDataConfigTeacher=()=>{
     .then(res=>res.json())
     .then(data=>{
       for(let j of data){
-        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.email,j.phone,j.id);
+        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.email,j.phone,j.id,j.pass);
       }  
     })
     .then(function(){
@@ -285,6 +286,7 @@ if(tbody!==null){
       const setLasName=document.querySelector('#inputApellidos');
       const setEmail=document.querySelector('#inputEmail');
       const setContact=document.querySelector('#inputContacto');
+      const setPassword=document.querySelector('#inputPassword');
 
       let p=ArregloJson.filter(d=>{
         if(d.id==s){
@@ -295,6 +297,7 @@ if(tbody!==null){
       setLasName.value=p[0].apellido;
       setEmail.value=p[0].email;
       setContact.value=p[0].contacto;
+      setPassword.value=p[0].pass;
     }
    
   })

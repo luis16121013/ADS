@@ -5,7 +5,7 @@
     </a>
         <div class="dropdown-menu bg-dark"> 
           <a id="perfil" class="dropdown-item text-primary" href="?a=perfil">Perfil</a>
-          <a class="dropdown-item text-primary" href="#configuracion">Configuracion</a>
+          <!--a class="dropdown-item text-primary" href="#configuracion">Configuracion</a-->
           <a class="dropdown-item text-primary" href="?id=close">Salir</a>
         </div>
     <ul class="navbar-nav ">
@@ -13,10 +13,10 @@
           <a id="inicio" class="nav-link" href="?a=inicio">INICIO</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cursos</a>
+          <a class="nav-link" href="?a=cursos">Cursos</a>
         </li>
 <!-- Dropdown -->
-        <li class="nav-item dropdown">
+        <!--li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                 Estudiantes
           </a>
@@ -24,6 +24,10 @@
           <a class="dropdown-item text-primary" href="#">Primaria</a>
           <a class="dropdown-item text-primary" href="#">Secundaria</a>
         </div>
+        </li-->
+
+        <li class="nav-item">
+          <a class="nav-link" href="?a=tareas">Tareas</a>
         </li>
     </ul>
 </nav> 
@@ -40,9 +44,12 @@
           <a class="nav-link" href="?a=inicio">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cursos</a>
+          <a class="nav-link" href="?a=cursos">Cursos</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="?a=tareas">Tareas</a>
+        </li>
+        <!--li class="nav-item">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               Usuarios
           </a>
@@ -51,7 +58,7 @@
             <a class="dropdown-item" href="#alumno">Alumnos</a>
             <a class="dropdown-item" href="#admini">Administradores</a>
           </div>
-        </li>
+        </li-->
         <li class="nav-item">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Configuracion</a>
           <div class="dropdown-menu">

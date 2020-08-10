@@ -24,7 +24,7 @@
                <img  class="" src="public/icons/undraw_Login_v483.svg" style="width: 25%;"> 
             </p>
 
-            <form action="index.php" method="post" enctype="multipart/form-data">
+            <form action="#index.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" class="form-control" required name="id" placeholder="Codigo">
                 </div>

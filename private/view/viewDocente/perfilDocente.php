@@ -1,5 +1,5 @@
 <!-- menu perfil---------------------------------------------------- -->
-<div class="content-wrapper " style="padding-top:75px;">
+<div class="content-wrapper " style="">
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -17,6 +17,7 @@
                 <h3 class="profile-username text-center">Docente</h3>
 
                 <?php 
+                //PASANDO VARIABLE JS DESDE PHP
                 $id=$_SESSION['ID'];
                 echo "<script>let idRegistro=$id</script>";
                 ?>
@@ -38,14 +39,14 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Informes</a></li>
+                  <!--li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Informes</a></li-->
         
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Info. adicional</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Info. adicional</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
+                  <!--div class="active tab-pane" id="activity">
                         <div class="media border p-3" style="border-radius: 15px;">
                           <img src="assets/icon/docente-icono.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                           <div class="media-body">
@@ -55,11 +56,11 @@
                             </p> 
                           </div>
                         </div>
-                  </div>
+                  </div-->
 
                   <!-- /.tab-pane -->
 
-                  <div class="tab-pane" id="settings">
+                  <div class="active tab-pane" id="settings">
                     <form class="form-horizontal">
 
                       <div class="form-group row">

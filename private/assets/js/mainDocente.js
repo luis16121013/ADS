@@ -4,7 +4,7 @@ const dataAditional=document.querySelector('#infoAdicional');
 const getDataDocente=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
-    fetch(`http://192.168.0.4/ADS/api/users/teachers/${idRegistro}`)
+    fetch(`http://192.168.0.4:8888/api/docente/${idRegistro}`)
     .then(res=>res.json())
     .then(data=>{
         for(let v of data){
@@ -19,14 +19,24 @@ const getDataDocente=()=>{
                 <b>Contacto</b> <a class="float-right">${v.phone}</a>
               </li>
               <li class="list-group-item">
-                <b>Email</b> <a class="float-right">${v.Email}</a>
+                <b>Email</b> <a class="float-right">${v.email}</a>
               </li>
             `;
         }
     })
 }
-getDataDocente();
+//getDataDocente();
 
+
+//configuaricon para manejo d errores al cargar las pages 
+const loader=()=>{
+  if(typeof idRegistro !="undefined"){
+    getDataDocente();
+  }
+}
+loader();
+
+if(dataAditional!==null){
 dataAditional.addEventListener('click',e=>{
     e.preventDefault();
     Swal.fire({
@@ -35,3 +45,5 @@ dataAditional.addEventListener('click',e=>{
         text:'Datos guardados.'
     })
 })
+
+}

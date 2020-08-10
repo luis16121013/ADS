@@ -43,7 +43,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-info text-white">
         <h5 class="modal-title" id="exampleModalLabel">Informacion Personal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -71,7 +71,8 @@
             </div>
             <div class="form-group col-md-6">
               <label for="inputPassword">Password</label>
-              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <!-- falta implementar para previsualizar la contraseña-->
+              <input type="text" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <div class="form-group">
@@ -82,11 +83,16 @@
             <label for="inputDomicilio">Domicilio</label>
             <input type="text" class="form-control" id="inputDomicilio" placeholder="Jr ejemplo 888">
           </div>
+
           <div class="form-row">
+
+            <!-- QUITANDO INPUT CIUDAD
             <div class="form-group col-md-6">
               <label for="inputCity">City</label>
               <input type="text" class="form-control" id="inputCity">
             </div>
+            -->
+
             <div class="form-group col-md-4">
               <label for="inputState">Sexo</label>
               <select id="inputState" class="form-control">
@@ -95,21 +101,26 @@
                 <option>Femenino</option>
               </select>
             </div>
+            <!--  QUITANDO EL INPUT ZIP
             <div class="form-group col-md-2">
               <label for="inputZip">Zip</label>
               <input type="text" class="form-control" id="inputZip">
             </div>
-          </div>
+          </div> 
+            -->
           
+          <!-- QUITANDO BOTON DEL FORMULARIO ENCAPSULADO
           <button type="submit" class="btn btn-primary">Sign in</button>
+          -->
+
         </form>
         </div>
 
         <!-- aqui teermina el formulario -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">guardar cambios</button>
       </div>
     </div>
   </div>

@@ -1,44 +1,45 @@
 <title>Escuela Virtual</title>
 <?php
     require_once 'model/administrador.php';
-    class controllerAdministrador{
+    class controllerAdministrador {
         private $admin;
         function __construct(){
             $this->admin=new administrador();
         }
 
         function index(){
-            require_once('view/header.php');
-            require_once('view/viewAdministrador/navAdministrador.php');
+            $this->HeadNav();
             require_once('view/viewAdministrador/inicioAdministrador.php');
             echo "<script>let pageAdmin='inicio';</script>";
-            require_once('view/footer.php');
+            $this->Footer();
             
         }
         function perfil(){
-					header('Access-Control-Allow-Origin: *');
-					header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-					header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-            require_once('view/header.php');
-            require_once('view/viewAdministrador/navAdministrador.php');
+            $this->HeadNav();
             require_once('view/viewAdministrador/navLocationAdministrador.php');
             require_once('view/viewAdministrador/perfilAdministrador.php');
             echo "<script>let pageAdmin='perfil';</script>";
-            require_once('view/footer.php');
+            $this->Footer();
         }
         function cursos(){
-            require_once('view/header.php');
-            require_once('view/viewAdministrador/navAdministrador.php');
+            $this->HeadNav();
             require_once('view/viewAdministrador/navLocationAdministrador.php');
             require_once('view/viewAdministrador/cursosAdministrador.php');
-            require_once('view/footer.php');
+            $this->Footer();
         }
         function pageDocente(){
-            require_once('view/header.php');
-            require_once('view/viewAdministrador/navAdministrador.php');
+            $this->HeadNav();
             require_once('view/viewAdministrador/navLocationAdministrador.php');
             require_once('view/viewAdministrador/pageDocentAdministrador.php');
             echo "<script>let pageAdmin='configDocente';</script>";
+            $this->Footer();
+        }
+
+        private function HeadNav(){
+            require_once('view/header.php');
+            require_once('view/viewAdministrador/navAdministrador.php');
+        }
+        private function Footer(){
             require_once('view/footer.php');
         }
 
