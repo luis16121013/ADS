@@ -1,7 +1,7 @@
 <!---------------------------- navergador principal pantalla grande---------------------------------------------------------------->
 <nav class="navbar d-none d-sm-none d-lg-flex navbar-expand-lg bg-dark navbar-dark fixed-top " style=" width: 100%;">
     <a class="navbar-brand dropdown dropdown-toggle mr-3" href="navbardrop" id="navbardrop" data-toggle="dropdown">
-     <img src="assets/icon/docente-icono.png" alt="Logo" style="width:40px;">
+     <img src="assets/img/DocentePred.jpeg" alt="Logo" style="width:40px; border-radius:50%;">
     </a>
         <div class="dropdown-menu bg-dark"> 
           <a id="perfil" class="dropdown-item text-primary" href="?a=perfil">Perfil</a>
@@ -26,9 +26,6 @@
         </div>
         </li-->
 
-        <li class="nav-item">
-          <a class="nav-link" href="?a=tareas">Tareas</a>
-        </li>
     </ul>
 </nav> 
 
@@ -46,9 +43,7 @@
         <li class="nav-item">
           <a class="nav-link" href="?a=cursos">Cursos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="?a=tareas">Tareas</a>
-        </li>
+
         <!--li class="nav-item">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               Usuarios

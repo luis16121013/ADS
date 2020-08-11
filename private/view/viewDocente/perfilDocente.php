@@ -10,8 +10,8 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="assets/icon/docente-icono.png"
-                       style="width:60%;">
+                       src="assets/img/DocentePred.jpeg"
+                       style="width:60%;border-radius:50%;">
                 </div>
 
                 <h3 class="profile-username text-center">Docente</h3>
