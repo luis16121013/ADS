@@ -94,13 +94,9 @@ const addEventRegisterTeacher=()=>{
 function validate(res){
   return new Promise((resol,fail)=>{
     let rpta=true;
-    if(res.dni=='')rpta=false
-    if(res.contact=='')rpta=false
-    if(res.firstName=='')rpta=false
-    if(res.lastName=='')rpta=false
-    if(res.email=='')rpta=false
-    if(res.pass=='')rpta=false
-    if(res.sexo=='')rpta=false
+    if(res.dni==''||res.contact==''||res.firstName==''||res.lastName==''||res.email==''||res.pass==''||res.sexo==''){
+      rpta=false
+    }
     if(rpta){
       resol(res)
     }else{
@@ -134,66 +130,69 @@ const post=()=>{
         }
         resolve(objetoTeacher)
       })
-      .then(res=>validate(res))
-      .then(respon=>{
-        if(respon){
-          fetch(`${urlAjax}/API/users/validate/${respon.dni}`)
-          .then(res=>res.json())
-          .then(info=>{
-            if(info){
-              fetch(`${urlAjax}/API/teachers`,{
-                method:'post',
-                headers: {
-                  'Accept': 'application/json, text/plain, *--',
-                  'Content-Type':'application/json; charset=UTF-8 '
-                },
-                body: JSON.stringify(respon)
-              })
-              .then(resp=>{
-                return new Promise((resolve,fail)=>{
-                  resolve(resp.ok)
+      .then(res=>{
+        validate(res)
+        .then(function(respon){
+          if(respon){
+            fetch(`${urlAjax}/API/users/validate/${respon.dni}`)
+            .then(res=>res.json())
+            .then(info=>{
+              if(info){
+                fetch(`${urlAjax}/API/teachers`,{
+                  method:'post',
+                  headers: {
+                    'Accept': 'application/json, text/plain, *--',
+                    'Content-Type':'application/json; charset=UTF-8 '
+                  },
+                  body: JSON.stringify(respon)
                 })
-                .then(data=>{
-                  if(data){
-                    return new Promise((resolve,fail)=>{
-                        resolve(loader())   
-                    })
-                    .then(function(){
-                      Swal.fire({
-                        type:'success',
-                        title:'exito!',
-                        text:'Docente Registrado.'
+                .then(resp=>{
+                  return new Promise((resolve,fail)=>{
+                    resolve(resp.ok)
+                  })
+                  .then(data=>{
+                    if(data){
+                      return new Promise((resolve,fail)=>{
+                          resolve(loader())   
                       })
-                    })
-                  }else{
-                    Swal.fire({
-                      type:'error',
-                      title:'Status 500!',
-                      text:'Ocurrio un error en el servidor!'
-                    })
-                  }
+                      .then(function(){
+                        Swal.fire({
+                          type:'success',
+                          title:'exito!',
+                          text:'Docente Registrado.'
+                        })
+                      })
+                    }else{
+                      Swal.fire({
+                        type:'error',
+                        title:'Status 500!',
+                        text:'Ocurrio un error en el servidor!'
+                      })
+                    }
+                  })
                 })
-              })
-            }else{
-              Swal.fire({
-                type:'error',
-                title:'Error, existe!',
-                text:'un registro con el dni..'
-              })
-            }
-          })
-          
-        }else{
-          Swal.fire({
-            type:'error',
-            title:'Error!',
-            text:'Complete todos los campos.'
-          })
-        }
+              }else{
+                Swal.fire({
+                  type:'error',
+                  title:'Error, existe!',
+                  text:'un registro con el dni..'
+                })
+              }
+            })
+            
+          }else{
+            Swal.fire({
+              type:'error',
+              title:'Error!',
+              text:'Complete todos los campos.'
+            })
+          }
+        })
+        .then(function(){
+          resetValuesForm()
+        })
       })
-      .then(function(){
-        resetValuesForm()
-      })
+      
   })
 }
 
