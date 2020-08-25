@@ -38,6 +38,10 @@ if(isset($_GET['url'])){
             $r=new controller(new Teacher); 
             print_r(json_encode($r->getRegisterTable()));
             http_response_code(200);
+        }else if($url=="teachers/prueba"){//HTTP UNIT TESTING IN GENERATE CODIG FOR USERS
+            $r=new controller(new Teacher); 
+            print_r(json_encode($r->prueba()));
+            http_response_code(200);
         }else if($url=='teachers/count'){             //table_teachers
             $r=new controller(new Teacher); 
             print_r(json_encode($r->countRegister()));

@@ -50,8 +50,9 @@ class controller{
         return $this->obj->validate($dni);
     }
 
-    public function prueba($array){
-        return $this->obj->setPrueba($array);
+    public function prueba(){
+        //return $this->obj->setPrueba($array);
+        return $this->obj->prueba();
     }
     public function deletePrueba($id){
         return $this->obj->deletePrueba($id);

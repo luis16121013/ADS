@@ -54,15 +54,19 @@ class Teacher implements IProcedure{
         $email=$array['email'];
         $pass=$array['pass'];
         $sexo=$array['sexo'];
+        
 
         $sqlUser="INSERT INTO table_users VALUES(0,'Docente',?,?)";
-        $sqlTeacher="INSERT INTO table_teachers VALUES(0,codigoTeacher(),?,?,?,?,?,codigoUser($dni),?)";
+        $sqlTeacher="INSERT INTO table_teachers VALUES(0,?,?,?,?,?,?,?,?)";
 
         $user=$this->db->conexion->prepare($sqlUser);
         $user->execute(array($pass,$dni));
         if($user->rowCount()>0){
+            $codigoUser=$this->codigoUsers($dni);
+            $codigoTeacher=$this->codigoTeachers();
+
             $teacher=$this->db->conexion->prepare($sqlTeacher);
-            $teacher->execute(array($dni,$firsName,$lastName,$phone,$email,$sexo));
+            $teacher->execute(array($codigoTeacher,$dni,$firsName,$lastName,$phone,$email,$codigoUser->idUser,$sexo));
             if($teacher->rowCount()>0){
                 return true;
             }
@@ -111,5 +115,33 @@ class Teacher implements IProcedure{
         $rs=$this->db->conexion->prepare($sql);
         $rs->execute();
         return $rs->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    /**
+     * FUNCTION DB-PROCEDURE
+     */
+    private function codigoUsers($dni){
+        $sql="SELECT idUser FROM table_users WHERE dni=?";
+        $rs=$this->db->conexion->prepare($sql);
+        $rs->execute(array($dni));
+        return $rs->fetch(PDO::FETCH_OBJ);
+    }
+    private function codigoTeachers(){
+        $sql="SELECT MAX(codigo) AS cod from table_teachers";
+        $rs=$this->db->conexion->prepare($sql);
+        $rs->execute();
+        if($rs->rowCount()>0){
+            $codigo=$rs->fetch(PDO::FETCH_OBJ);
+            $generate=substr($codigo->cod,-7);
+            $result=intval($generate)+1;
+            $cod="DOC$result";
+            return $cod;
+        }
+        return "DOC2001001";
+    }
+
+    //UNIT TESTING IN GENERATE CODIGO FOR USERS
+    public function prueba(){
+        return $this->codigoTeachers();
     }
 }
