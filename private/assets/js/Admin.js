@@ -303,6 +303,7 @@ const eventBrowser=()=>{
 
 /**
  * CREATE EVENT BUTTONS FOR UPDATE AND DELETE
+ * NOTE:: USING METHOD GET ->NOT SUPPORT INFINITYFREE PUT AND DELETE
  */
 const AddEventButtonUD=()=>{
     tbody.addEventListener('click',e=>{
@@ -328,14 +329,10 @@ const AddEventButtonUD=()=>{
                         idDelete=element.id;
                     }
                  });
-                 fetch(`${urlAjax}/API/teachers/${idDelete}`,{
-                   method:'DELETE'
-                 })
+                 fetch(`${urlAjax}/API/teachers/delete/${idDelete}`)
                  .then(res=>{
                    if(res.ok){
-                    fetch(`${urlAjax}/API/users/${id}`,{
-                      method:'DELETE'
-                    })
+                    fetch(`${urlAjax}/API/users/delete/${id}`)
                     .then(data=>{
                       if(data.ok){
                         return new Promise((resolve,fail)=>{
@@ -385,6 +382,7 @@ const AddEventButtonUD=()=>{
 
 /**
  * CREATE METHOD HTTP AJAX UPDATE PUT
+ * NOTE::USE METHOD POST -> INFINITYFREE NOT SUPPORT PUT AND DELETE
  */
 const updateTeacher=()=>{
     put.addEventListener('click',e=>{
@@ -400,7 +398,7 @@ const updateTeacher=()=>{
           pass:setPassword.value
         }
         fetch(`${urlAjax}/API/teachers/${setId.value}`, {
-          method: 'put',
+          method: 'post',
           headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json; charset=UTF-8 '

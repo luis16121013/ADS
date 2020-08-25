@@ -62,21 +62,35 @@ if(isset($_GET['url'])){
         }else if($url=="admins/$number"){
             $r=new controller(new Admin); 
             print_r(json_encode($r->getRegisterById($number)));
-            http_response_code(200);;
+            http_response_code(200);
         }
+        else if($url=="users/delete/$number"){//SIMULE METHOD HTTP DELETE
+            $u=new controller(new User);
+            print_r(json_encode($u->delete($number)));
+            http_response_code(200);
+        }else if($url=="teachers/delete/$number"){
+            $t=new controller(new Teacher);
+            print_r(json_encode($t->delete($number)));
+            http_response_code(200);
+        } 
        
     }else if($_SERVER['REQUEST_METHOD']=='POST'){
         $postBody= file_get_contents("php://input");
         $json=json_decode($postBody,true);
             if(json_last_error()==0){
                if($url=='teachers'){
-                $r=new controller(new Teacher);
-                print_r(json_encode($r->insertData($json)));
-                http_response_code(200);
+                    $r=new controller(new Teacher);
+                    print_r(json_encode($r->insertData($json)));
+                    http_response_code(200);
+               }
+               else if($url=="teachers/$number"){//SIMULE METHOD HTTP PUT
+                    $r=new controller(new Teacher);
+                    print_r(json_encode($r->updateTeacher($json)));
+                    http_response_code(200);
                } 
             }
 
-    }else if($_SERVER['REQUEST_METHOD']=='PUT'){
+    }else if($_SERVER['REQUEST_METHOD']=='PUT'){//NOT USED,NOT SOPORTED PUT HOSTING INFINITYFREE
         $putBody=file_get_contents("php://input");
         $json=json_decode($putBody,true);
             if(json_last_error()==0){
@@ -88,7 +102,7 @@ if(isset($_GET['url'])){
             }else{
                 http_response_code(400);
             }
-    }else if($_SERVER['REQUEST_METHOD']=='DELETE'){
+    }else if($_SERVER['REQUEST_METHOD']=='DELETE'){//NOT USED,NOT SOPORTED DELETE HOSTING INFINITYFREE
         if($url=="users/$number"){
             $u=new controller(new User);
             print_r(json_encode($u->delete($number)));
