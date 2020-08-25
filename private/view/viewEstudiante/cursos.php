@@ -11,8 +11,8 @@
               <p class="card-text"><strong><h3>Matematica</h3></strong></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=Math">Crear Tarea</a>
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goTaskCourse&c=Math">Ver tareas</a>
+                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=Math">Ir al curso</a>
+                  
                 </div>
                 <!--small class="text-muted">9 mins</small-->
               </div>
@@ -27,8 +27,8 @@
               <p class="card-text"><strong><h3>Educacion Fisica</h3></strong></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group ">
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=PhysicalEducation">Crear Tarea</a>
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goTaskCourse&c=PhysicalEducation">Ver tareas</a>
+                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=PhysicalEducation">Ir al curso</a>
+                  
                 </div>
                 <!--small class="text-muted">9 mins</small-->
               </div>
@@ -43,8 +43,8 @@
             <p class="card-text"><strong><h3>Comunicacion</h3></strong></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=Comunication">Crear Tarea</a>
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goTaskCourse&c=Comunication">Ver tareas</a>
+                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=Comunication">Ir al curso</a>
+                  
                 </div>
               </div>
             </div>
@@ -59,8 +59,8 @@
               <p class="card-text"><strong><h3>Personal Social</h3></strong></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=SocialPerson">Crear Tarea</a>
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goTaskCourse&c=SocialPerson">Ver tareas</a>
+                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=SocialPerson">Ir al curso</a>
+                  
                 </div>
                 <!--small class="text-muted">9 mins</small-->
               </div>
@@ -75,8 +75,8 @@
               <p class="card-text"><strong><h3>Ciencia y ambiente</h3></strong></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=ScienceAndEnvironment">Crear Tarea</a>
-                  <a class="btn btn-sm btn-outline-primary" href="?a=goTaskCourse&c=ScienceAndEnvironment">Ver tareas</a>
+                  <a class="btn btn-sm btn-outline-primary" href="?a=goCourse&c=ScienceAndEnvironment">Ir al curso</a>
+                  
                 </div>
                 <!--small class="text-muted">9 mins</small-->
               </div>

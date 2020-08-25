@@ -1,8 +1,9 @@
 <?php
 session_start();
-define('_IP_','192.168.0.4');
+require_once('private/config/config.php');
+$ruta=_REDIRECTION_."private/app.php";
 if(isset($_SESSION['usuario'])){
-  header('Location:http://'._IP_.'/ADS/private/app.php');
+    header($ruta);
 }else if(isset($_POST['ingresar'])){
      require_once 'private/controller/controllerUser.php';
      $controller= new controllerUser();
@@ -14,7 +15,7 @@ if(isset($_SESSION['usuario'])){
       $_SESSION['IDUSER']=$rs->idUser;
       $_SESSION['usuario']=$rs->cargo;
       $_SESSION['name']=$rs->firstName.' '.$rs->lastName;
-      header('Location:http://'._IP_.'/ADS/private/app.php');
+      header($ruta);
 		 }
 }else{
   require_once('public/login.php');

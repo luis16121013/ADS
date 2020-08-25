@@ -6,7 +6,7 @@
             $this->usuario=new usuario();
         }
         public function validarUser(){
-            $rs=$this->usuario->validateUser($_POST['cargo'],$_POST['id'],$_POST['pass']);
+            $rs=$this->usuario->validateUser($_POST['cargo'],$_POST['dni'],$_POST['pass']);
             if(!$rs || $rs==null){
                 return 'Err_user';
             }

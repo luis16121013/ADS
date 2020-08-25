@@ -4,12 +4,14 @@
 
 <?php 
    session_start();
-   define('_IP_','192.168.0.4');
+   require_once('config/config.php');
+
    if(isset($_SESSION['usuario'])){
       if(isset($_GET['id']) and $_GET['id']=='close'){
          session_unset();
          session_destroy();
-         header('Location:http://'._IP_.'/ADS/');
+         
+         header(_REDIRECTION_);
       }
 
       require_once 'controller/controller'.$_SESSION['usuario'].'.php';
@@ -23,7 +25,7 @@
       }
       call_user_func(array($controller,$action));
    }else{
-      header('Location:http://'._IP_.'/ADS/');
+      header(_REDIRECTION_);
    }
 ?>
 

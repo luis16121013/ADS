@@ -9,7 +9,7 @@
           <h6 class="text-center">Atte. La Administración.</h6>
           <br>
           <p class="text-center">
-            <img src="assets/img/DocentePred.jpeg" alt="" style="width: 25%; border-radius:50%;">
+            <img src="assets/icon/MaleAvatar.png" alt="" style="width: 25%; border-radius:50%;">
           </p>
           <h6 class="text-center">Docente</h6>
       </div>

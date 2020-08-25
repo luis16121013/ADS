@@ -1,8 +1,10 @@
 //console.log(idRegistro);
+
 const dataAditional=document.querySelector('#infoAdicional');
 const pagination=document.querySelector('#table-pagination-global');
 const search=document.querySelector('#myInput');
 const tbody=document.querySelector('#myTable');
+
 let ArregloJson=[];
 let datasBrowser=[];
 /* reiniciamos el arreglo de obj JSON */
@@ -13,7 +15,7 @@ const resetDataJson=(arr=ArregloJson)=>{
 }
 
 /* ingresamos datos para el arreglo */
-const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id,pass)=>{
+const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id,pass,sexo)=>{
     let Teacher={
       idUser:idUser,
       codigo:cod,
@@ -23,7 +25,8 @@ const createDataByJson=(idUser,cod,rol,nombre,apellido,email,phone,id,pass)=>{
       email:email,
       contacto:phone,
       id:id,
-      pass:pass
+      pass:pass,
+      sexo:sexo
     }
     ArregloJson.push(Teacher);
 }
@@ -41,7 +44,6 @@ const printByRange=(initial=0,arr=ArregloJson)=>{
   while(true){
     rellenar.innerHTML+=`
       <tr>
-        <td>${arr[initial].codigo}</td>
         <td>${arr[initial].nombre}</td>
         <td>${arr[initial].apellido}</td>
         <td>${arr[initial].email}</td>
@@ -136,7 +138,7 @@ const busquedaJson=()=>{
 const getDataAdmin=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
-    fetch(`http://192.168.0.4:8888/api/administrador/${idRegistro}`)
+    fetch(`${urlAjax}/API/admins/${idRegistro}`)
     .then(res=>res.json())
     .then(data=>{
         for(let v of data){
@@ -169,18 +171,18 @@ const getDataConfigTeacher=()=>{
     resetDataJson();
     const rellenar=document.querySelector('#myTable');
     rellenar.innerHTML='';
-    fetch('http://192.168.0.4:8888/api/docente')
+    fetch(`${urlAjax}/API/teachers`)
     .then(res=>res.json())
     .then(data=>{
       for(let j of data){
-        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.email,j.phone,j.id,j.pass);
+        createDataByJson(j.idUser,j.codigo,j.cargo,j.firstName,j.lastName,j.email,j.phone,j.id,j.pass,j.sexo);
       }  
     })
     .then(function(){
       printTable();
       createPaginationOftable();
     })
-    //console.log(ArregloJson);/* comprobando los datos del arreglo */ 
+    console.log(ArregloJson);/* comprobando los datos del arreglo */ 
 }
 
 const loader=()=>{
@@ -250,11 +252,38 @@ if(search!==null){
 }
 
 //ADD EVENT AL CUERPO DE LA TABLA
+const setIdUser=document.querySelector('#inputIDUSER');
+const setId=document.querySelector('#inputID');
+const setCodigo=document.querySelector('#inputCODIGO');
+const setName=document.querySelector('#inputNombres');
+const setLasName=document.querySelector('#inputApellidos');
+const setEmail=document.querySelector('#inputEmail');
+const setContact=document.querySelector('#inputContacto');
+const setPassword=document.querySelector('#inputPassword');
+const setSexo=document.querySelector('#opcion');
+const setAllInformation=(p)=>{
+      setIdUser.value=p.idUser;
+      setId.value=p.id;
+      setCodigo.value=p.codigo;
+      setName.value=p.nombre;
+      setLasName.value=p.apellido;
+      setEmail.value=p.email;
+      setContact.value=p.contacto;
+      setPassword.value=p.pass;
+      if(p.sexo=='M'){
+        setSexo.options[1].selected = true;
+        console.log(p.sexo);
+      }else{
+        setSexo.options[2].selected = true;
+        console.log(p.sexo);
+      }
+}
 if(tbody!==null){
   
   tbody.addEventListener('click',e=>{
     e.preventDefault();
     if(typeof e.target.parentElement.attributes.id != 'undefined'){
+      if(e.target.parentElement.attributes.id.value!= 'myTable'){
          Swal.fire({
            title: 'Eliminar!',
            text: "Esta seguro que desea eliminar!",
@@ -277,29 +306,65 @@ if(tbody!==null){
                'success'
              )
            }
-         })
+         })  
+      }
+      
     }
     if(typeof e.target.parentNode.attributes.value !='undefined'){
-      //console.log(e.target.parentNode.attributes.value.textContent);
-      const s=e.target.parentNode.attributes.value.textContent;
-      const setName=document.querySelector('#inputNombres');
-      const setLasName=document.querySelector('#inputApellidos');
-      const setEmail=document.querySelector('#inputEmail');
-      const setContact=document.querySelector('#inputContacto');
-      const setPassword=document.querySelector('#inputPassword');
 
-      let p=ArregloJson.filter(d=>{
-        if(d.id==s){
-          return d;
+      const s=e.target.parentNode.attributes.value.textContent;
+      //const p=ArregloJson.filter(d=>{
+      //  if(d.id==s){
+      //    return d;
+      //  }
+      //});
+      for(let i=0;i<ArregloJson.length;i++){
+        if(ArregloJson[i].id==s){
+          setAllInformation(ArregloJson[i]);
         }
-      });
-      setName.value=p[0].nombre;
-      setLasName.value=p[0].apellido;
-      setEmail.value=p[0].email;
-      setContact.value=p[0].contacto;
-      setPassword.value=p[0].pass;
+      }
+      //setAllInformation(p);
     }
    
   })
   
 }
+
+/**
+ * udpate info
+ */
+const put = document.querySelector('#update');
+if(put !==null){
+  put.addEventListener('click',e=>{
+    let datos={
+      id:setId.value,
+      codigo:setCodigo.value,
+      firstName:setName.value,
+      lastName:setLasName.value,
+      phone:setContact.value,
+      email:setEmail.value,
+      idUser:setIdUser.value,
+      sexo:setSexo.value,
+      pass:setPassword.value
+    }
+    fetch(`${urlAjax}/API/admins/${setId.value}`, {
+      method: 'put',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json; charset=UTF-8 '
+      },
+      body: JSON.stringify(datos)
+    }).then(res=>res.json())
+    .then(res=>console.log(res))
+    .then(Swal.fire({
+      type:'success',
+      title:'Exito!',
+      text:'Datos Actualizados.'
+      })
+    
+    );
+    
+  });
+  
+}
+

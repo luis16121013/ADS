@@ -25,7 +25,7 @@ if(isset($_GET['a'])):
               <li class="breadcrumb-item active"><?php echo $course;?></li>
             <?php }else if($page==$pages[3]){ ?>
               <li class="breadcrumb-item active"><a href="?a=cursos">Cursos </a></li>
-              <li class="breadcrumb-item active"><?php echo $course;?></li>
+              <li class="breadcrumb-item active"><a href="?a=goCourse&c=<?php echo $nameCourse; ?>"><?php echo $course;?></a></li>
               <li class="breadcrumb-item active">Tareas</li>
             <?php }else if($page==$pages[4]){ ?>
               <li class="breadcrumb-item active">Cursos</li>

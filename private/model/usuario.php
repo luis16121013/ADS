@@ -1,6 +1,6 @@
 <?php
     require_once 'private/Includes/database.php';
-    //require_once 'mysqlDB.php';
+
     class usuario{
         public $id=null;
         public $idUser=null;
@@ -12,7 +12,7 @@
             $this->db=database::getConnection();
         }
         
-        public function validateUser($user,$id,$password){
+        public function validateUser($user,$dni,$password){
             try{
                 $rs=array();
                 $table=null;
@@ -25,13 +25,13 @@
                 }else{
                     return null;
                 }
-                //$rs=$this->db->conexion->prepare("CALL validarUser(?,?,?)");
-                $sql="SELECT ts.id, tu.idUser, tu.cargo, ts.firstName, ts.lastName, ts.sexo FROM $table ts,table_users tu WHERE ts.idUser=tu.idUser AND ts.codigo=? AND tu.pass=?";
+                
+                $sql="SELECT ts.id, tu.idUser, tu.cargo, ts.firstName, ts.lastName, ts.sexo FROM $table ts,table_users tu WHERE ts.idUser=tu.idUser AND ts.dni=? AND tu.pass=?";
                 $rs=$this->db->conexion->prepare($sql);
-                $rs->execute(array($id,$password));
+                $rs->execute(array($dni,$password));
                 if($rs->rowCount()>0){
                 return $rs->fetch(PDO::FETCH_OBJ);
-            }
+                }
             return false;
             }catch(Exception $e){
                 die('error: '.$e->getMessage());

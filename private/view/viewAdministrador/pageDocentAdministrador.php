@@ -1,4 +1,5 @@
 
+
 <div class="container-fluid">
   <div class="">
     <div class="row">
@@ -6,19 +7,19 @@
         <input class="form-control " id="myInput" type="text" placeholder="Search..">
       </div>
       <div class="col-2">
-        <a class="btn btn-info" href="#">
-          <img src="assets/icon/refresh.svg" class="p-0" style="width: 25px;">
+        <a id="addRegister" class="btn btn-info" href="#" data-toggle="modal" data-target="#formPOST">
+          <img src="assets/icon/addUserTeacher2.svg" class="p-0" style="width: 30px;">
         </a>
       </div>
     </div>
   </div>
+
   <div class="contanier" style="overflow:auto;">
       <table class="table table-hover table-bordered mt-3">
         <thead class="bg-dark text-white">
           <tr>
-            <th>codigo</th>
-            <th>nombre</th>
             <th>apellido</th>
+            <th>nombre</th>
             <th>email</th>
             <th>contacto</th>
             <th>Opciones</th>
@@ -29,13 +30,15 @@
         </tbody>
       </table>
   </div>
-
+ 
   <ul id="table-pagination-global" class="pagination">
     <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item active"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 
+  <?php require_once('FormPost.php'); ?>
+  
 </div>
 
 
@@ -55,32 +58,45 @@
         <div class="container">
           <form id="formulario-info-update">
           <div class="form-row">
+            <div class="form-group col-6 col-sm-3 col-md-3">
+              <label class="text-danger" for="inputIDUSER">Id Usuario</label>
+              <input type="text" class="form-control" id="inputIDUSER" placeholder="iduser" disabled>
+            </div>
+            <div class="form-group col-6 col-sm-2 col-md-3">
+              <label class="text-danger" for="inputID">Id</label>
+              <input type="text" class="form-control" id="inputID" placeholder="id" disabled>
+            </div>
+            <div class="form-group col-sm-7 col-md-6">
+              <label class="text-danger" for="inputCODIGO">Codigo</label>
+              <input type="text" class="form-control" id="inputCODIGO" placeholder="codigo" disabled>
+            </div>
+
             <div class="form-group col-md-6">
-              <label for="inputNombres">Nombres</label>
-              <input type="text" class="form-control" id="inputNombres" placeholder="Nombres">
+              <label class="text-primary" for="inputNombres">Nombres</label>
+              <input type="text" class="form-control" id="inputNombres" placeholder="Nombres" maxlength="30">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputApellidos">Apellidos</label>
-              <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+              <label class="text-primary" for="inputApellidos">Apellidos</label>
+              <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos" maxlength="30">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="inputEmail">Email</label>
+              <label class="text-primary" for="inputEmail">Email</label>
               <input type="email" class="form-control" id="inputEmail" placeholder="Email">
             </div>
             <div class="form-group col-md-6">
-              <label for="inputPassword">Password</label>
+              <label class="text-primary" for="inputPassword">Password</label>
               <!-- falta implementar para previsualizar la contraseña-->
               <input type="text" class="form-control" id="inputPassword" placeholder="Password">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputContacto">Contacto</label>
-            <input type="text" class="form-control" id="inputContacto" placeholder="telefono o celular">
+            <label class="text-primary" for="inputContacto">Contacto</label>
+            <input type="text" class="form-control" id="inputContacto" placeholder="telefono o celular" maxlength="15">
           </div>
           <div class="form-group">
-            <label for="inputDomicilio">Domicilio</label>
+            <label class="text-primary" for="inputDomicilio">Domicilio</label>
             <input type="text" class="form-control" id="inputDomicilio" placeholder="Jr ejemplo 888">
           </div>
 
@@ -94,11 +110,11 @@
             -->
 
             <div class="form-group col-md-4">
-              <label for="inputState">Sexo</label>
-              <select id="inputState" class="form-control">
+              <label class="text-primary" for="opcion">Sexo</label>
+              <select id="opcion" name="sexo" class="form-control">
                 <option selected>Opcion</option>
-                <option>Masculino</option>
-                <option>Femenino</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
               </select>
             </div>
             <!--  QUITANDO EL INPUT ZIP
@@ -120,8 +136,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">guardar cambios</button>
+        <button id="update" type="button" class="btn btn-primary">guardar cambios</button>
       </div>
     </div>
   </div>
 </div> 
+
+

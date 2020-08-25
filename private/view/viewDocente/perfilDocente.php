@@ -10,7 +10,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="assets/img/DocentePred.jpeg"
+                       src="assets/icon/MaleAvatar.png"
                        style="width:60%;border-radius:50%;">
                 </div>
 
@@ -19,7 +19,7 @@
                 <?php 
                 //PASANDO VARIABLE JS DESDE PHP
                 $id=$_SESSION['ID'];
-                echo "<script>let idRegistro=$id</script>";
+                echo "<script>let idRegistro=$id; </script>";
                 ?>
 
                 <ul id="listado-datos" class="list-group list-group-unbordered mb-3" >

@@ -1,11 +1,11 @@
 <?php
 require_once('model/docente.php');
-require_once('controllerCourse.php');
-class controllerDocente extends controllerCourse{
+require_once('urlControllerCourse.php');
+require_once('ICourse.php');
+class controllerDocente extends urlControllerCourse implements ICourse{
     private $teacher;
-    public function __construct(){
-        $this->teacher=new docente();
-    }
+    public function __construct(){$this->teacher=new docente();}
+
     public function index(){
         $this->HeadNav();
         require_once('view/viewDocente/inicioDocente.php');
@@ -33,14 +33,16 @@ class controllerDocente extends controllerCourse{
      */
     public function goCourse(){
         $this->HeadNav();
+        $course=$this->urlTaskController();
         require_once('view/viewDocente/navLocationDocente.php');
-        $this->openCourse();
+        $this->openCourse($course);
         $this->footer();
     }
     public function goTaskCourse(){
         $this->HeadNav();
+        $course=$this->urlTaskController();
         require_once('view/viewDocente/navLocationDocente.php');
-        $this->TaskCourse();
+        $this->TaskCourse($course);
         $this->footer();
     }
 
@@ -55,6 +57,16 @@ class controllerDocente extends controllerCourse{
     }
     private function footer(){
         require_once('view/footer.php');
+    }
+
+    /**
+     * CONTROLLER URL COURSE TEACHER
+     */
+    public function openCourse($course){
+        require_once('view/viewDocente/viewCourse/courseMath.php');
+    }
+    public function taskCourse($course){
+        require_once('view/viewDocente/viewCourse/taskCourse.php');
     }
 
 
@@ -78,4 +90,6 @@ class controllerDocente extends controllerCourse{
             return 'index';
         }
     }
+
+
 }

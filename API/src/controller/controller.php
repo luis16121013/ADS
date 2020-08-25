@@ -1,46 +1,54 @@
 <?php 
 class controller{
     private $obj=null;
-    public function __construct($instance=null){
-        if($instance==null){
-            $instance='';
-        }else if($instance=='users'){
-            require_once('src/models/users.php');
-            $this->obj= new users();
-        }else if($instance=='prueba'){
-            require_once('src/models/pruebaPost.php');
-            $this->obj= new prueba();
-        }
+    public function __construct(IProcedure $instance){
+        $this->obj=$instance;
     } 
-    /*---------GET USUARIOS------------*/ 
-    public function Users(){
-        return $this->obj->getUsers();
+    /**
+     * AJAX HTTP GET DATA 
+     */ 
+    public function getRegisterTable(){
+        return $this->obj->getData();
     }
-    public function UsersId($id){
-        return $this->obj->getUsersId($id);
+   
+    public function countRegister(){
+        return $this->obj->countData();
     }
-    /*-------------GET DATA OF PROCEDURE STATEDMENT*/
-    public function getStudents(){
-        return $this->obj->getStudents();
+    /**
+     * AJAX HTTP GET DATA BY ID
+     */
+    public function getRegisterById($id){
+        return $this->obj->getData($id);
     }
-    public function getTeachers(){
-        return $this->obj->getTeachers();
-    }
-    public function getAdmins(){
-        return $this->obj->getAdmins();
-    }
-    /*--------------GED DATA PROCEDURE OF STATEDMENT BY ID*/
-    public function getStudentsById($number){
-        return $this->obj->getStudentsById($number);
-    }
-    public function getTeachersById($number){
-        return $this->obj->getTeachersById($number);
-    }
-    public function getAdminsById($number){
-        return $this->obj->getAdminsById($number);
+    public function getDataLimit($number){
+        return $this->obj->getLimit($number);
     }
     
+    /**
+     * AJAX HTTP POST DATA
+     */
+    public function insertData($array){
+        return $this->obj->postInsert($array);
+    }
+    /**
+     * AJAX HTTP DELETE DATA
+     */
+    public function delete($id){
+        return $this->obj->deleteRegister($id);
+    }
 
+    //--------------PUT DATA BY ID
+    public function updateTeacher($array){
+        return $this->obj->putTeacherById($array);
+    }
+
+
+    /**
+     * HTTP VALIDATE-AJAX EXIST REGISTER
+     */
+    public function validateRegister($dni){
+        return $this->obj->validate($dni);
+    }
 
     public function prueba($array){
         return $this->obj->setPrueba($array);
@@ -51,6 +59,8 @@ class controller{
     public function updatePrueba($array){
         return $this->obj->updatePrueba($array);
     }
+
+
 
 }
 ?>

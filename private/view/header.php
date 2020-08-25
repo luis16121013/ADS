@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="lib/animate.css/animate.css">
     <link rel="stylesheet" href="lib/sweetAlert2/sweetalert2.min.css"> 
     <link rel="stylesheet" href="assets/css/myStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/styleTeacher.css">
+  
 </head>
 <body class="background-gris">
     

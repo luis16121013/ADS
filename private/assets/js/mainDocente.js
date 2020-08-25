@@ -1,10 +1,12 @@
 //console.log(idRegistro);
+
+
 const dataAditional=document.querySelector('#infoAdicional');
 
 const getDataDocente=()=>{
     const registro=document.querySelector('#listado-datos');
     registro.innerHTML='';
-    fetch(`http://192.168.0.4:8888/api/docente/${idRegistro}`)
+    fetch(`http://192.168.0.4/ADS/API/teachers/${idRegistro}`)
     .then(res=>res.json())
     .then(data=>{
         for(let v of data){
