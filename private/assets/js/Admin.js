@@ -318,9 +318,12 @@ const AddEventButtonUD=()=>{
                    if(res.ok){
                     fetch(`${urlAjax}/API/users/delete/${id}`)
                     .then(data=>{
+                      console.log(data.ok)
                       if(data.ok){
+                        console.log(data.ok)
                         return new Promise((resolve,fail)=>{
-                          resolve(loader())
+                          resolve(RESETJSON())
+                          resolve(tableTeacher())
                         })
                         .then(function(){
                           Swal.fire(

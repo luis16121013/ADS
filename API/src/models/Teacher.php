@@ -130,8 +130,8 @@ class Teacher implements IProcedure{
         $sql="SELECT MAX(codigo) AS cod from table_teachers";
         $rs=$this->db->conexion->prepare($sql);
         $rs->execute();
-        if($rs->rowCount()>0){
-            $codigo=$rs->fetch(PDO::FETCH_OBJ);
+        $codigo=$rs->fetch(PDO::FETCH_OBJ);
+        if($codigo->cod!=''){
             $generate=substr($codigo->cod,-7);
             $result=intval($generate)+1;
             $cod="DOC$result";
