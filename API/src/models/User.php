@@ -10,7 +10,6 @@ class User implements IProcedure{
     
     /**
      * METHODS OF INTERFACE PROCEDURE
-     * 
      */
 
     public function validate($dni){

@@ -21,7 +21,7 @@ class controller{
         return $this->obj->getData($id);
     }
     public function getDataLimit($number){
-        return $this->obj->getLimit($number);
+        return $this->obj->getDataLimit($number);
     }
     
     /**
@@ -30,6 +30,10 @@ class controller{
     public function insertData($array){
         return $this->obj->postInsert($array);
     }
+    public function insertInfo($array){
+        return $this->obj->insert($array);
+    }
+
     /**
      * AJAX HTTP DELETE DATA
      */
@@ -38,8 +42,11 @@ class controller{
     }
 
     //--------------PUT DATA BY ID
-    public function updateTeacher($array){
-        return $this->obj->putTeacherById($array);
+    public function updateInfo($array){
+        return $this->obj->update($array);
+    }
+    public function updatePerfil($id,$array){
+        return $this->obj->updatePerfil($id,$array);
     }
 
 

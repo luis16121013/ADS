@@ -5,13 +5,13 @@
 <?php
     if(isset($_SESSION['usuario'])){
         echo "<script src='assets/js/config.js'></script>";
+        echo "<script src='assets/js/Alert.js'></script>";
         if($_SESSION['usuario']=='Administrador'){
-            //echo "<script src='assets/js/mainAdmin.js'></script>";
-            echo "<script src='assets/js/Admin.js'></script>";
+            require_once('viewAdministrador/FooterAdmin.php');
         }else if($_SESSION['usuario']=='Docente'){
-            echo "<script src='assets/js/mainDocente.js'></script>";
+            require_once('viewDocente/FooterTeacher.php');
         }else if($_SESSION['usuario']=='Estudiante'){
-            echo "<script src='assets/js/Estudiante.js'></script>";
+            //echo "<script src='assets/js/Estudiante.js'></script>";
         }
     }
 ?>

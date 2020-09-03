@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_GET['url'])){
     require_once('src/models/User.php');
     require_once('src/models/Admin.php');
@@ -63,6 +64,15 @@ if(isset($_GET['url'])){
             $r=new controller(new Admin); 
             print_r(json_encode($r->getRegisterById($number)));
             http_response_code(200);
+        }else if($url=="admins/limit/$number"){     
+            $r=new controller(new Admin);      
+            print_r(json_encode($r->getDataLimit($number)));
+            http_response_code(200);
+        }
+        else if($url=="admins/delete/$number"){//SIMULE METHOD HTTP DELETE
+            $u=new controller(new Admin);
+            print_r(json_encode($u->delete($number)));
+            http_response_code(200);
         }
         else if($url=="users/delete/$number"){//SIMULE METHOD HTTP DELETE
             $u=new controller(new User);
@@ -80,14 +90,26 @@ if(isset($_GET['url'])){
             if(json_last_error()==0){
                if($url=='teachers'){
                     $r=new controller(new Teacher);
-                    print_r(json_encode($r->insertData($json)));
+                    print_r(json_encode($r->insertInfo($json)));
+                    http_response_code(200);
+               }else if($url=='admins'){
+                    $r=new controller(new Admin);
+                    print_r(json_encode($r->insertInfo($json)));
                     http_response_code(200);
                }
-               else if($url=="teachers/$number"){//SIMULE METHOD HTTP PUT
-                    $r=new controller(new Teacher);
-                    print_r(json_encode($r->updateTeacher($json)));
+                else if($url=="admins/update"){//SIMULE METHOD HTTP PUT
+                    $r=new controller(new Admin);
+                    print_r(json_encode($r->updateInfo($json)));
                     http_response_code(200);
-               } 
+                }else if($url=="admins/update/perfil/$number"){
+                    $r=new controller(new Admin);
+                    print_r(json_encode($r->updatePerfil($number,$json)));
+                    http_response_code(200);
+                }else if($url=="teachers/update"){//SIMULE METHOD HTTP PUT
+                    $r=new controller(new Teacher);
+                    print_r(json_encode($r->updateInfo($json)));
+                    http_response_code(200);
+                } 
             }
 
     }else if($_SERVER['REQUEST_METHOD']=='PUT'){//NOT USED,NOT SOPORTED PUT HOSTING INFINITYFREE

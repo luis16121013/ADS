@@ -6,12 +6,10 @@ class docente{
         $this->db=database::getConnection();
     }
 
-    //no se esta usando NOTA
-    public function urlController($url){
-        if($url=='inicio'){
-            return 'index';
-        }else{
-            return 'index';
-        }
+    public function renderCourse($id){
+        $sql="SELECT*FROM table_course WHERE idTeacher=?";
+        $rs=$this->db->conexion->prepare($sql);
+        $rs->execute(array($id));
+        return $rs->fetchAll(PDO::FETCH_OBJ);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 define('_HOST_','localhost');
 define('_PORT_','3306');
 define('_DDBB_','aulavirtual2020');

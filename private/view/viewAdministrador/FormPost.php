@@ -41,19 +41,13 @@
 
           <div class="form-row">
 
-            <!-- QUITANDO INPUT CIUDAD
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity">
-            </div>
-            -->
             <div class="form-group col-md-8">
               <label class="text-primary" for="postPass">Password</label>
               <input type="text" class="form-control" id="postPass" placeholder="Password">
             </div>
             <div class="form-group col-md-4">
               <label class="text-primary" for="opcion">Sexo</label>
-              <select id="postOpcion" name="sexo" class="form-control">
+              <select id="postSexo" name="sexo" class="form-control">
                 <option selected>Opcion</option>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
@@ -65,17 +59,6 @@
               <label class="text-primary" for="postDomicilio">Domicilio</label>
               <input type="text" class="form-control" id="postDomicilio" disabled placeholder="Jr ejemplo 888">
             </div>
-            <!--  QUITANDO EL INPUT ZIP
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip">
-            </div>
-          </div> 
-            -->
-          
-          <!-- QUITANDO BOTON DEL FORMULARIO ENCAPSULADO
-          <button type="submit" class="btn btn-primary">Sign in</button>
-          -->
 
         </form>
         </div>

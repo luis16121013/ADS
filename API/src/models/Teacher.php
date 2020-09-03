@@ -1,7 +1,8 @@
 <?php
 require_once('../private/Includes/database.php');
 require_once('IProcedure.php');
-class Teacher implements IProcedure{
+require_once('CodigoUser.php');
+class Teacher extends CodigoUser implements IProcedure{
     private $db=null;
 
     /**
@@ -11,10 +12,6 @@ class Teacher implements IProcedure{
         $this->db=database::getConnection();
     }
 
-    public function getLimit($number){
-        return $this->getDataLimit($number);
-    }
-
     public function countData(){
         return $this->countAllTeachers();
     }
@@ -22,8 +19,7 @@ class Teacher implements IProcedure{
     /**
      * AJAX HTTP METHOD PUT
      */
-    public function putTeacherById($array){
-        $id=$array['id']; //table_teachers pk
+    public function update($array){
         $codigo=$array['codigo'];
         $nombre=$array['firstName'];
         $apellido=$array['lastName'];
@@ -34,9 +30,9 @@ class Teacher implements IProcedure{
         $idUser=$array['idUser'];//table_users pk
         $pass=$array['pass'];
 
-        $sql="UPDATE table_teachers set firstName=?,lastName=?,phone=?,email=?,sexo=? WHERE id=?";
+        $sql="UPDATE table_teachers set firstName=?,lastName=?,phone=?,email=?,sexo=? WHERE idUser=?";
         $teacher=$this->db->conexion->prepare($sql);
-        $teacher->execute(array($nombre,$apellido,$phone,$email,$sexo,$id));
+        $teacher->execute(array($nombre,$apellido,$phone,$email,$sexo,$idUser));
 
         $sql="UPDATE table_users set pass=? WHERE idUser=?";
         $user=$this->db->conexion->prepare($sql);
@@ -46,40 +42,43 @@ class Teacher implements IProcedure{
     /**
      * AJAX HTTP METHOD POST
      */
-    public function postInsert($array){
+    public function insert($array){
         $dni=$array['dni'];
-        $phone=$array['contact'];
+        $phone=$array['phone'];
         $firsName=$array['firstName'];
         $lastName=$array['lastName'];
         $email=$array['email'];
         $pass=$array['pass'];
         $sexo=$array['sexo'];
         
-
         $sqlUser="INSERT INTO table_users VALUES(0,'Docente',?,?)";
         $sqlTeacher="INSERT INTO table_teachers VALUES(0,?,?,?,?,?,?,?,?)";
 
         $user=$this->db->conexion->prepare($sqlUser);
         $user->execute(array($pass,$dni));
         if($user->rowCount()>0){
-            $codigoUser=$this->codigoUsers($dni);
+            $codigoUser=$this->getCodigo($dni);
             $codigoTeacher=$this->codigoTeachers();
 
             $teacher=$this->db->conexion->prepare($sqlTeacher);
-            $teacher->execute(array($codigoTeacher,$dni,$firsName,$lastName,$phone,$email,$codigoUser->idUser,$sexo));
+            $teacher->execute(array($codigoTeacher,$dni,$firsName,$lastName,$phone,$email,$codigoUser,$sexo));
             if($teacher->rowCount()>0){
                 return true;
+            }else{
+                $this->deleteRegisterModelUser($this->getCodigo($dni));
+                return false;
             }
-            return false;
+        }else{
+                $this->deleteRegisterModelUser($this->getCodigo($dni));
+                return false;
         }       
-        return false;
     }
 
     /**
      * AJAX METHOD DELETE-------METHOD IS OF INTERFACE PROCEDURE
      */
     public function deleteRegister($id){
-        $sql="DELETE FROM table_teachers WHERE id=?";
+        $sql="DELETE FROM table_teachers WHERE idUser=?";
         $rs=$this->db->conexion->prepare($sql);
         $rs->execute(array($id));
         if($rs->rowCount()>0){
@@ -120,12 +119,7 @@ class Teacher implements IProcedure{
     /**
      * FUNCTION DB-PROCEDURE
      */
-    private function codigoUsers($dni){
-        $sql="SELECT idUser FROM table_users WHERE dni=?";
-        $rs=$this->db->conexion->prepare($sql);
-        $rs->execute(array($dni));
-        return $rs->fetch(PDO::FETCH_OBJ);
-    }
+    
     private function codigoTeachers(){
         $sql="SELECT MAX(codigo) AS cod from table_teachers";
         $rs=$this->db->conexion->prepare($sql);

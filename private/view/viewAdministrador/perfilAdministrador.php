@@ -3,7 +3,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 pt-1">
 
             <!-- Profile Image -->
             <div class="card card-primary card-outline">
@@ -25,7 +25,7 @@
                     <!-- rellenar datos del usuario API -->
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                <a href="#" class="btn btn-primary btn-block"><b>Información</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -34,7 +34,7 @@
 
           </div>
           <!-- /.col -->
-          <div class="col-md-8">
+          <div class="col-md-8 pt-2">
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
@@ -63,27 +63,27 @@
                     <form class="form-horizontal">
 
                       <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputEmail" class="col-sm-2 col-form-label text-primary"><strong>Email</strong></label>
                         <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                          <input type="email" class="form-control " id="inputEmail" placeholder="Email">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Contacto</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label text-primary"><strong>Contacto</strong></label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="celular y/o telefono">
+                          <input type="text" class="form-control " id="inputContact" placeholder="celular y/o telefono">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+                        <label for="inputName2" class="col-sm-2 col-form-label text-primary"><strong>Contraseña</strong></label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                          <input type="text" class="form-control " id="inputPass" placeholder="contraseña">
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button id="infoAdicional" type="submit" class="btn btn-danger">Guardar</button>
+                          <button id="updatePerfil" type="submit" class="btn btn-danger">Guardar</button>
                         </div>
                       </div>
                     </form>

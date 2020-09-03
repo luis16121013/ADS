@@ -1,7 +1,7 @@
 
 <?php 
 if(isset($_GET['a'])):
-  $pages=array('PERFIL','PAGEDOCENTE','PAGEALUMNO','PAGEADMINISTRADOR','CURSOS');
+  $pages=array('PERFIL','PAGEDOCENTE','PAGEALUMNO','ADMINISTRADOR','CURSOS');
   $page=strtoupper($_GET['a']);
   if(in_array($page,$pages)):
     ?>
@@ -14,9 +14,9 @@ if(isset($_GET['a'])):
             <?php }else if($page==$pages[1]){ ?>
               <li class="breadcrumb-item active">Usuarios / Docentes</li>
             <?php }else if($page==$pages[2]){ ?>
-              <li class="breadcrumb-item active"><a href="#">Perfil</a></li>
+              <li class="breadcrumb-item active">Usuarios / Estudiantes</li>
             <?php }else if($page==$pages[3]){ ?>
-              <li class="breadcrumb-item active"><a href="#">Perfil</a></li>
+              <li class="breadcrumb-item active">Usuarios / Administradores</li>
             <?php }else if($page==$pages[4]){ ?>
               <li class="breadcrumb-item active">Cursos</li>
             <?php } ?>

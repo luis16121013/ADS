@@ -23,7 +23,7 @@
         <div class="dropdown-menu bg-dark">
           <a class="dropdown-item text-primary" href="?a=pageDocente">Docentes</a>
           <a class="dropdown-item text-primary" href="#">Alumnos</a>
-          <a class="dropdown-item text-primary" href="#">Administradores</a>
+          <a class="dropdown-item text-primary" href="?a=Administrador">Administradores</a>
         </div>
         </li>
     </ul>
@@ -50,7 +50,7 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="?a=pageDocente">Docentes</a>
             <a class="dropdown-item" href="#">Alumnos</a>
-            <a class="dropdown-item" href="#">Administradores</a>
+            <a class="dropdown-item" href="?a=Administrador">Administradores</a>
           </div>
         </li>
         <li class="nav-item">
