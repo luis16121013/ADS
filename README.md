@@ -1,2 +1,2 @@
 # ADS
-# proyecto ads "gestion de matriculas-control de tareas"
+# proyecto ads "SISTEMA DE GESTION DE TAREAS Y CALIFICACIONES"
